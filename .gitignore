@@ -27,3 +27,10 @@ override.tf.json
 
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
 # example: *tfplan*
+vault-gcp
+vault-training-maniak-academy-fc4daf2ca521.json
+vault-gcp.pub
+
+
+  git config user.email "sebastian@maniak.io"
+  git config user.name "sebbycorp"
