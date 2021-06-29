@@ -18,7 +18,7 @@ terraform {
 
 
 provider "google" {
-  credentials = file("vault-training-maniak-academy-fc4daf2ca521.json")
+  credentials = file("./certs/vault-training-maniak-academy-fc4daf2ca521.json")
   project = "vault-training-maniak-academy"
   region  = "us-central1"
   zone    = "us-central1-c"
@@ -42,8 +42,10 @@ resource "google_compute_instance" "vault-maniak" {
    }
  }
  metadata = {
-   ssh-keys = "ubuntu:${file("vault-gcp.pub")}"
+   ssh-keys = "ubuntu:${file("./certs/vault-gcp.pub")}"
  }
+
+
 
 // Make sure flask is installed on all new instances for later steps
  metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq build-essential python-pip rsync; pip install flask"

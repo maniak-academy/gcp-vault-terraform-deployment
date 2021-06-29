@@ -31,6 +31,5 @@ vault-gcp
 vault-training-maniak-academy-fc4daf2ca521.json
 vault-gcp.pub
 
-
-  git config user.email "sebastian@maniak.io"
-  git config user.name "sebbycorp"
+certs/*
+/certs/*
