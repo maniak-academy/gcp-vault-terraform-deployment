@@ -7,3 +7,6 @@ Notes: https://medium.com/@wynsen/gcp-hashicorp-vault-deployment-with-terraform-
 ./google-cloud-sdk/bin/gcloud auth application-default login
 
 ./google-cloud-sdk/bin/gcloud compute images list
+
+
+ /Users/sebbycorp//google-cloud-sdk/bin/gcloud beta compute ssh --zone "us-central1-c" "vault-vm-6f53381b"  --project "vault-training-maniak-academy"
