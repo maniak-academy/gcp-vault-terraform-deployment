@@ -18,8 +18,8 @@ terraform {
 
 
 provider "google" {
-  credentials = file("./certs/vault-training-maniak-academy-fc4daf2ca521.json")
-  project = "vault-training-maniak-academy"
+  credentials = file("./certs/maniak-io-60c003ee1531.json")
+  project = "maniak-io"
   region  = "us-central1"
   zone    = "us-central1-c"
 }
@@ -48,7 +48,7 @@ resource "google_compute_instance" "vault-maniak" {
 
 
 // Make sure flask is installed on all new instances for later steps
- metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq build-essential python-pip rsync; pip install flask"
+ metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq build-essential python-pip rsync certbot unzip jq; pip install flask"
 
  network_interface {
    network = "default"
@@ -59,12 +59,10 @@ resource "google_compute_instance" "vault-maniak" {
  }
 }
 
-
-
-resource "google_dns_record_set" "resource-recordset" {
-  managed_zone = "maniakacademy-com"
-  name         = "test-record.maniakacademy.com."
+resource "google_dns_record_set" "vault-maniak-dns" {
+  managed_zone = "maniak"
+  name         = "vault.maniak.io."
   type         = "A"
-  rrdatas      = ["10.0.0.1", "10.1.0.1"]
-  ttl          = 86400
+  rrdatas      = [google_compute_instance.vault-maniak.network_interface.0.access_config.0.nat_ip]
+  ttl          = 600
 }

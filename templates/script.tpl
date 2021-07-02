@@ -8,7 +8,7 @@ local_ipv4="$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)"
 #Utils
 sudo apt-get install unzip
 
-sudo hostnamectl set-hostname ${vault_name} 
+sudo hostnamectl set-hostname vault.maniak.io
 
 #Download Consul
 
